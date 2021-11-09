@@ -1,0 +1,49 @@
+<div fxLayout="row" fxLayoutAlign="space-around center" class="login-container">
+    <div fxLayout="row" fxLayoutAlign="space-around stretch" fxFlex="30" class="inner-container">
+        <div fxLayout="column" style="width: 100%">
+            <span class="login-title">Login</span>
+
+            <form [formGroup]="loginForm" fxLayout="column" fxLayoutAlign="space-around stretch" fxFlexOffset="10px" autocomplete="off">
+                <mat-form-field appearance="outline">
+                    <mat-label>Email Id</mat-label>
+                    <input
+                        matInput
+                        formControlName="userId"
+                        placeholder="Enter email id"
+                        spellcheck="false"
+                        [errorStateMatcher]="matcher"
+                        oninput="this.value = this.value.toLowerCase()"
+                        autocomplete="off"
+                    />
+                    <mat-error>
+                        {{ getEmailErrorMessage() }}
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input
+                        matInput
+                        [type]="passwordHide ? 'password' : 'text'"
+                        placeholder="Password"
+                        formControlName="password"
+                        spellcheck="false"
+                        maxlength="25"
+                        required
+                        [errorStateMatcher]="matcher"
+                    />
+                    <mat-icon matSuffix (click)="passwordHide = !passwordHide" class="visibility-icon hover-pointer" autocomplete="new-password">
+                        {{ passwordHide ? 'visibility' : 'visibility_off' }}
+                    </mat-icon>
+                    <mat-error>
+                        {{ getPasswordErrorMessage() }}
+                    </mat-error>
+                </mat-form-field>
+
+                <div fxLayoutAlign="space-around center">
+                    <button fxFlex="25" mat-raised-button color="primary" (click)="login()" [disabled]="!loginForm.valid || (isLoading$ | async)">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

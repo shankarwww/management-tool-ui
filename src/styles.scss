@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+@import '~material-design-icons/iconfont/material-icons.css';
+
+.hover-pointer {
+    cursor: pointer;
+}
+
+.spinner-class {
+    margin-left: 5px;
+}
+
+.project-name {
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.dialog-cancel-btn {
+    font-size: 28px;
+    cursor: pointer;
+}

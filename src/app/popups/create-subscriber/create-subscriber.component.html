@@ -1,0 +1,36 @@
+<div>
+    <h2 mat-dialog-title>
+        <div fxLayoutAlign="space-between center">
+            <span> {{ data.title }}: </span>
+            <span><mat-icon (click)="close()" class="dialog-cancel-btn">cancel</mat-icon></span>
+        </div>
+        <mat-divider></mat-divider>
+    </h2>
+
+    <form [formGroup]="subscriberForm" autocomplete="off" spellcheck="false">
+        <mat-dialog-content fxLayout="column" fxLayoutGap="3%">
+            <mat-form-field fxFlex="100">
+                <mat-label>Subscriber Id</mat-label>
+                <input matInput placeholder="SubscriberId" formControlName="subscriberId" [errorStateMatcher]="matcher" />
+            </mat-form-field>
+            <mat-form-field fxFlex="100">
+                <mat-label>Environment Type</mat-label>
+                <mat-select formControlName="type">
+                    <mat-option>None</mat-option>
+                    <mat-option *ngFor="let envType of environmentTypes" [value]="envType.type">{{ envType.type }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field fxFlex="100">
+                <mat-label>Description</mat-label>
+                <input matInput placeholder="description" formControlName="description" [errorStateMatcher]="matcher" />
+            </mat-form-field>
+        </mat-dialog-content>
+    </form>
+
+    <mat-dialog-actions fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="9px" *ngIf="data.editAllowed">
+        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+            <button mat-raised-button color="warn" [disabled]="!subscriberForm.valid || isSuccess" (click)="createSubscription()">{{ data.buttonTitle }}</button>
+        </div>
+    </mat-dialog-actions>
+    <div *ngIf="message.length > 0" fxLayoutAlign="center center" style="padding-top: 28px; color: blue; font-weight: 600">{{ message }}</div>
+</div>

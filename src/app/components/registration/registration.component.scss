@@ -1,0 +1,27 @@
+.registration-container {
+    margin-top: 5%;
+    .inner-container {
+        border: 1px solid gray;
+        padding: 20px;
+        border-radius: 2px;
+    }
+    .title {
+        margin: 8px 0 8px 0;
+        font-size: 19px;
+    }
+
+    .registration {
+        width: 600px;
+        height: 100px;
+    }
+
+    .register-now {
+        width: 650px;
+        height: 650px;
+    }
+
+    .user-reg-success {
+        margin-top: 10px;
+        color: green;
+    }
+}

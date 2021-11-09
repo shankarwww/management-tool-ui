@@ -1,0 +1,64 @@
+<div fxLayout="row" fxLayoutAlign="space-around center" class="registration-container">
+    <div fxLayout="row" fxLayoutAlign="space-around stretch" fxFlex="30" class="inner-container">
+        <div fxLayout="column" style="width: 100%">
+            <div class="title">Registration</div>
+
+            <form [formGroup]="form" fxLayout="column" fxLayoutAlign="space-around stretch" fxFlexOffset="10px" autocomplete="off">
+                <mat-form-field appearance="outline">
+                    <mat-label>Email Id</mat-label>
+                    <input
+                        matInput
+                        formControlName="userId"
+                        placeholder="Enter Email"
+                        spellcheck="false"
+                        [errorStateMatcher]="matcher"
+                        oninput="this.value = this.value.toLowerCase()"
+                        autocomplete="off"
+                        required
+                    />
+                    <mat-error>
+                        {{ getEmailErrorMessage() }}
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Full Name</mat-label>
+                    <input matInput formControlName="fullName" placeholder="Enter full name" spellcheck="false" [errorStateMatcher]="matcher" autocomplete="off" required />
+                    <mat-error> </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" placeholder="Password" formControlName="password" spellcheck="false" maxlength="25" required [errorStateMatcher]="matcher" />
+                    <mat-error>
+                        {{ getPasswordErrorMessage() }}
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Re-enter your password</mat-label>
+                    <input
+                        matInput
+                        type="password"
+                        placeholder="Re-enter Password"
+                        formControlName="confirmPassword"
+                        spellcheck="false"
+                        maxlength="25"
+                        required
+                        [errorStateMatcher]="matcher"
+                    />
+                    <mat-error>
+                        {{ getConfirmPasswordErrorMessage() }}
+                    </mat-error>
+                </mat-form-field>
+
+                <div fxLayoutAlign="space-around center">
+                    <button fxFlex="50" mat-raised-button color="primary" (click)="register()" [disabled]="!form.valid || isSuccess">Register</button>
+                </div>
+                <div *ngIf="isSuccess" fxLayoutAlign="space-around center" class="user-reg-success">
+                    <span> User registered successfully !!!</span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

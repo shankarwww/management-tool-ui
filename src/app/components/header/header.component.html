@@ -1,0 +1,18 @@
+<mat-toolbar color="primary">
+    <div fxFlex="50"><span class="project-name">Application Management Tool</span></div>
+
+    <div fxFlex="50" fxLayoutAlign="end center">
+        <div *ngIf="isLoggedIn">
+            <div fxLayoutAlign="end center" fxLayoutGap="20px">
+                <div class="toolbar-option">Welcome {{ userName }}</div>
+                <div class="toolbar-option">|</div>
+                <div class="toolbar-option hover-pointer" (click)="logout()">Logout</div>
+            </div>
+        </div>
+
+        <div *ngIf="!isLoggedIn" fxLayoutAlign="end center" fxLayoutGap="20px">
+            <div class="toolbar-option hover-pointer" (click)="gotoLogin()">Login</div>
+            <div class="toolbar-option hover-pointer" (click)="gotoRegister()">Register</div>
+        </div>
+    </div>
+</mat-toolbar>
